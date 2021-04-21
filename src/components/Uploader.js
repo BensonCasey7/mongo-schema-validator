@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Uploader = (props) => {
-
-  const handleChange = e => {
+  const handleChange = (e) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
-    fileReader.onload = e => {
+    fileReader.onload = (e) => {
       console.log("e.target.result", e.target.result);
       props.setFile(e.target.result);
     };
@@ -18,6 +17,6 @@ const Uploader = (props) => {
       {"uploaded file content -- " + props.file}
     </>
   );
-}
+};
 
-export default Uploader
+export default Uploader;
