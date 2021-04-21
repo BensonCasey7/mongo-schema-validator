@@ -1,0 +1,35 @@
+.page-wrapper {
+  background-color: $light-gray;
+  display: flex;
+  justify-content: center;
+  min-height: 80vh;
+
+  @include breakpoint(medium up) {
+    padding: 0 $global-padding /2;
+  }
+
+  &__content {
+    background-color: $white;
+    width: 100%;
+
+    @include breakpoint(medium) {
+      width: map-get($breakpoints, "medium");
+    }
+
+    @include breakpoint(large) {
+      width: map-get($breakpoints, "large");
+    }
+
+    @include breakpoint(xlarge) {
+      width: map-get($breakpoints, "xlarge");
+    }
+
+    @include breakpoint(xxlarge) {
+      width: map-get($breakpoints, "xxlarge");
+    }
+  }
+}
+
+.page {
+  padding: $global-padding;
+}

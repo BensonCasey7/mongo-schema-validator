@@ -1,0 +1,7 @@
+@import "~foundation-sites/scss/foundation";
+@include foundation-xy-grid-classes;
+
+@import "./_variables.scss";
+
+@import "./_global.scss";
+@import "./_page.scss";

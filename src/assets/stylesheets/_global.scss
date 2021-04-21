@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body, input, button {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+h1 {
+  font-weight: $fw-black;
+  margin: 0;
+}
