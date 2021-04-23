@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./assets/stylesheets/App.scss";
 
 import Uploader from "./components/Uploader";
+import FileFrame from "./components/FileFrame";
 
 function App() {
   const [file, setFile] = useState(null);
@@ -12,6 +13,7 @@ function App() {
         <div className={"page"}>
           <h1>Mongo Schema Validator</h1>
           <Uploader file={file} setFile={setFile} />
+          <FileFrame file={file} />
         </div>
       </div>
     </div>

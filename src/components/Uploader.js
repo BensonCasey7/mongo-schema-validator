@@ -5,16 +5,15 @@ const Uploader = (props) => {
     const fileReader = new FileReader();
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
-      console.log("e.target.result", e.target.result);
-      props.setFile(e.target.result);
+      const file = JSON.parse(e.target.result);
+      console.log(file);
+      props.setFile(file);
     };
   };
 
   return (
     <>
       <input type="file" onChange={handleChange} />
-      <br />
-      {"uploaded file content -- " + props.file}
     </>
   );
 };
