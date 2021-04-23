@@ -1,5 +1,7 @@
 import React from "react";
 
+import nobel from "../nobel_prizes_incorrect.json";
+
 const Uploader = (props) => {
   const handleChange = (e) => {
     const fileReader = new FileReader();
@@ -11,9 +13,14 @@ const Uploader = (props) => {
     };
   };
 
+  const mockData = () => {
+    props.setFile(nobel);
+  };
+
   return (
     <>
       <input type="file" onChange={handleChange} />
+      <button onClick={mockData}>Mock Nobel Prize Data</button>
     </>
   );
 };

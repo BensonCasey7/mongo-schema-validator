@@ -2,7 +2,7 @@
   background-color: $light-gray;
   display: flex;
   justify-content: center;
-  min-height: 80vh;
+  min-height: 100vh;
 
   @include breakpoint(medium up) {
     padding: 0 $global-padding / 2;

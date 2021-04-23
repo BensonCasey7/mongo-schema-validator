@@ -1,4 +1,13 @@
 .json-viewer {
-  max-height: 300px;
+  max-height: 150px;
   overflow: scroll;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.json-preview {
+  font-family: 'Source Code Pro', monospace;
+
+  &__nest-container {
+    padding-left: $global-padding / 2;
+  }
 }

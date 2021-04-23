@@ -3,6 +3,7 @@ import "./assets/stylesheets/App.scss";
 
 import Uploader from "./components/Uploader";
 import FileFrame from "./components/FileFrame";
+import JsonPreview from "./components/JsonPreview";
 
 function App() {
   const [file, setFile] = useState(null);
@@ -14,6 +15,7 @@ function App() {
           <h1>Mongo Schema Validator</h1>
           <Uploader file={file} setFile={setFile} />
           <FileFrame file={file} />
+          {file ? <JsonPreview data={file} /> : <></>}
         </div>
       </div>
     </div>
