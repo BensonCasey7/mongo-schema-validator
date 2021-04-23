@@ -10,4 +10,18 @@
   &__nest-container {
     padding-left: $global-padding / 2;
   }
+
+  &__exploder {
+    cursor: pointer;
+    margin-right: $global-margin / 4;
+  }
+
+  &__key {
+    font-weight: $fw-bold;
+  }
+
+  &--center {
+    display: flex;
+    align-items: center;
+  }
 }

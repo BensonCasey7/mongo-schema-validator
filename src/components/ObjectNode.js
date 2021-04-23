@@ -1,20 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { BsFillCaretDownFill, BsFillCaretRightFill } from "react-icons/bs";
 
 const ObjectNode = (props) => {
+  const [exploded, setExploded] = useState(false);
+
   return (
     <>
       {Array.isArray(props.data) ? (
-        <div className={"json-preview__nest-container"}>
-          <div>
-            {props.data.map((item) => {
-              return (
-                <div>
-                  <ObjectNode data={item} />
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <>
+          {exploded ? (
+            <>
+              <span className={"json-preview--center"}>
+                <BsFillCaretDownFill
+                  className={"json-preview__exploder"}
+                  onClick={() => {
+                    setExploded(false);
+                  }}
+                />{" "}
+                Array ({props.data.length} items)
+              </span>
+              <div className={"json-preview__nest-container"}>
+                {props.data.map((item) => {
+                  return (
+                    <div>
+                      <ObjectNode data={item} />
+                    </div>
+                  );
+                })}
+              </div>
+            </>
+          ) : (
+            <>
+              <span className={"json-preview--center"}>
+                <BsFillCaretRightFill
+                  className={"json-preview__exploder"}
+                  onClick={() => {
+                    setExploded(true);
+                  }}
+                />{" "}
+                Array ({props.data.length} items)
+              </span>
+            </>
+          )}
+        </>
       ) : (
         <>
           {typeof props.data === "object" ? (
@@ -22,7 +50,8 @@ const ObjectNode = (props) => {
               {Object.entries(props.data).map(([key, value]) => {
                 return (
                   <div>
-                    {key}: <ObjectNode data={value} />
+                    <span className={"json-preview__key"}>{key}:</span>{" "}
+                    <ObjectNode data={value} />
                   </div>
                 );
               })}
