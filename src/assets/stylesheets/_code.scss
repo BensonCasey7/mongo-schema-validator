@@ -1,6 +1,6 @@
 .json-viewer {
   max-height: 150px;
-  overflow: scroll;
+  overflow-y: scroll;
   font-family: 'Source Code Pro', monospace;
   font-size: 12px;
   font-weight: $fw-semi-bold;
@@ -9,6 +9,8 @@
 .json-preview {
   font-family: 'Source Code Pro', monospace;
   font-size: 14px;
+  max-height: 500px;
+  overflow-y: scroll;
 
   &__nest-container {
     padding-left: $global-padding / 2;
