@@ -6,7 +6,6 @@ const Uploader = (props) => {
     fileReader.readAsText(e.target.files[0], "UTF-8");
     fileReader.onload = (e) => {
       const file = JSON.parse(e.target.result);
-      console.log(file);
       props.setFile(file);
     };
   };

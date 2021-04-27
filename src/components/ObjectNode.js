@@ -9,7 +9,11 @@ const ObjectNode = (props) => {
       {Array.isArray(props.data) ? (
         <ArrayDisplay data={props.data} schema={props.schema} />
       ) : (
-        <KeyValueDisplay data={props.data} schema={props.schema} />
+        <KeyValueDisplay
+          data={props.data}
+          schema={props.schema}
+          required={props.required}
+        />
       )}
     </>
   );

@@ -21,7 +21,11 @@ const ArrayDisplay = (props) => {
         {props.data.map((item, index) => {
           return (
             <div key={index} className={"json-preview__nest-item"}>
-              <ObjectNode data={item} schema={props.schema?.properties} />
+              <ObjectNode
+                data={item}
+                schema={props.schema?.properties}
+                required={props.schema?.required}
+              />
             </div>
           );
         })}
