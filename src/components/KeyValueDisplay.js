@@ -29,6 +29,18 @@ const KeyValueDisplay = (props) => {
           }
         }
         break;
+      case "string":
+        if (typeof props.data !== "string") {
+          setError(true);
+          break;
+        }
+        if (props.schema.pattern) {
+          if (!props.data.match(props.schema.pattern)) {
+            setError(true);
+            break;
+          }
+        }
+        break;
       default:
         setError(false);
     }

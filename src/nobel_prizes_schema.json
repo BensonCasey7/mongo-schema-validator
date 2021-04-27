@@ -20,8 +20,14 @@
       "required": ["id", "firstname", "surname", "motivation", "share"],
       "properties": {
         "id": { "bsonType": "string" },
-        "firstname": { "bsonType": "string" },
-        "surname": { "bsonType": "string" },
+        "firstname": {
+          "bsonType": "string",
+          "pattern": "^[A-zÀ-ÿ]+$"
+        },
+        "surname": {
+          "bsonType": "string",
+          "pattern": "^[A-zÀ-ÿ]+$"
+        },
         "motivation": { "bsonType": "string" },
         "share": { "bsonType": "int" }
       }
