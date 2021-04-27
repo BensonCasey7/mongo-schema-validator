@@ -1,0 +1,82 @@
+[
+    {
+        "year": 2020,
+        "category": "chemistry",
+        "laureates": [
+            {
+                "id": "991",
+                "firstname": "Emman%%#$uelle",
+                "surname": "Charpentier",
+                "motivation": "\"for the development of a method for genome editing\"",
+                "share": -1
+            },
+            {
+                "id": "992",
+                "firstname": "Jennifer A.",
+                "surname": "",
+                "motivation": "\"for the development of a method for genome editing\"",
+                "share": 2
+            }
+        ]
+    },
+    {
+        "year": 22020,
+        "category": "economics",
+        "laureates": [
+            {
+                "id": "995",
+                "firstname": "Paul",
+                "surname": "Milgrom",
+                "motivation": "\"for improvements to auction theory and inventions of new auction formats\"",
+                "share": 2
+            },
+            {
+                "id": "996",
+                "firstname": "Robert",
+                "surname": "Wilson",
+                "motivation": "\"for improvements to auction theory and inventions of new auction formats\"",
+                "share": 2
+            }
+        ]
+    },
+    {
+        "year": 2020,
+        "category": "literature",
+        "laureates": [
+            {
+                "id": "993",
+                "firstname": "Louise",
+                "surname": "Gl\u00fcck",
+                "motivation": "\"for her unmistakable poetic voice that with austere beauty makes individual existence universal\"",
+                "share": 1
+            }
+        ]
+    },
+    {
+        "year": 2015,
+        "category": "medi------cine",
+        "laureates": [
+            {
+                "id": "916",
+                "firstname": "William C.",
+                "surname": "Campbell",
+                "motivation": "\"for their discoveries concerning a novel therapy against infections caused by roundworm parasites\"",
+                "share": -12
+            },
+            {
+                "id": "917",
+                "firstname": "Satoshi",
+                "surname": "&#332;mura",
+                "motivation": "\"for their discoveries concerning a novel therapy against infections caused by roundworm parasites\"",
+                "share": -12
+            },
+            {
+                "id": "918",
+                "firstname": "Youyou",
+                "surname": "Tu",
+                "motivation": "\"for her discoveries concerning a novel therapy against Malaria\"",
+                "share": 2
+            }
+        ]
+    }
+]

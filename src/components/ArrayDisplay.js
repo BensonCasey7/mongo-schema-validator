@@ -4,7 +4,7 @@ import { BsFillCaretDownFill, BsFillCaretRightFill } from "react-icons/bs";
 import ObjectNode from "./ObjectNode";
 
 const ArrayDisplay = (props) => {
-  const [exploded, setExploded] = useState(false);
+  const [exploded, setExploded] = useState(true);
 
   return exploded ? (
     <>
@@ -14,14 +14,14 @@ const ArrayDisplay = (props) => {
           onClick={() => {
             setExploded(false);
           }}
-        />{" "}
+        />
         Array ({props.data.length} items)
       </span>
       <div className={"json-preview__nest-container"}>
-        {props.data.map((item) => {
+        {props.data.map((item, index) => {
           return (
-            <div className={"json-preview__nest-item"}>
-              <ObjectNode data={item} />
+            <div key={index} className={"json-preview__nest-item"}>
+              <ObjectNode data={item} schema={props.schema?.properties} />
             </div>
           );
         })}

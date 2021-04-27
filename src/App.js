@@ -4,12 +4,12 @@ import "./assets/stylesheets/App.scss";
 import Uploader from "./components/Uploader";
 import FileFrame from "./components/FileFrame";
 import JsonPreview from "./components/JsonPreview";
-import nobel from "./nobel_prizes_incorrect.json";
+import nobel from "./nobel_prizes_incorrect_shortened.json";
 import nobel_schema from "./nobel_prizes_schema.json";
 
 function App() {
-  const [file, setFile] = useState(null);
-  const [schema, setSchema] = useState(null);
+  const [file, setFile] = useState([]);
+  const [schema, setSchema] = useState({});
 
   return (
     <div className={"page-wrapper"}>
@@ -36,7 +36,7 @@ function App() {
             mockDataText={"Mock Nobel Prize Schema"}
           />
           <FileFrame file={schema} />
-          {file ? <JsonPreview data={file} /> : <></>}
+          {file ? <JsonPreview data={file} schema={schema} /> : <></>}
         </div>
       </div>
     </div>

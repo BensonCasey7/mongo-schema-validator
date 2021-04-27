@@ -7,9 +7,9 @@ const ObjectNode = (props) => {
   return (
     <>
       {Array.isArray(props.data) ? (
-        <ArrayDisplay data={props.data} />
+        <ArrayDisplay data={props.data} schema={props.schema} />
       ) : (
-        <KeyValueDisplay data={props.data} />
+        <KeyValueDisplay data={props.data} schema={props.schema} />
       )}
     </>
   );

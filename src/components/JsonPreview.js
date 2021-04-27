@@ -7,7 +7,7 @@ const JsonPreview = (props) => {
     <div>
       <h3>Previewer</h3>
       <div className={"json-preview"}>
-        <ObjectNode data={props.data} />
+        <ObjectNode data={props.data} schema={props.schema} />
       </div>
     </div>
   );

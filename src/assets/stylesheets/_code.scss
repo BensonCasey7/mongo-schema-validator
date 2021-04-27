@@ -29,6 +29,13 @@
     font-weight: $fw-bold;
   }
 
+  &__value--error {
+    font-weight: $fw-bold;
+    background-color: $light-red;
+    border: $red 2px solid;
+    border-radius: 2px;
+  }
+
   &--center {
     display: flex;
     align-items: center;

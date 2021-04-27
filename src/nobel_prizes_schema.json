@@ -1,5 +1,5 @@
 {
-  "bsonType": "object",
+  "bsonType": "array",
   "title": "nobel_prize",
   "required": ["year", "category", "laureates"],
   "properties": {
