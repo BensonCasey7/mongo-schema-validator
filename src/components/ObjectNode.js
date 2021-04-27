@@ -22,7 +22,7 @@ const ObjectNode = (props) => {
               <div className={"json-preview__nest-container"}>
                 {props.data.map((item) => {
                   return (
-                    <div>
+                    <div className={"json-preview__nest-item"}>
                       <ObjectNode data={item} />
                     </div>
                   );

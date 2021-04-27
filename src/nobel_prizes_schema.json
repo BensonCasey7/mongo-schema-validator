@@ -1,0 +1,30 @@
+{
+  "bsonType": "object",
+  "title": "nobel_prize",
+  "required": ["year", "category", "laureates"],
+  "properties": {
+    "year": {
+      "bsonType": "int",
+      "min": 1900,
+      "max": 2021
+    },
+    "category": {
+      "bsonType": "string",
+      "pattern": "physics|medicine|peace|chemistry|economics|literature"
+    },
+    "overallMotivation": { "bsonType": "string" },
+    "laureates": {
+      "bsonType": "array",
+      "items": "object",
+      "title": "laureates",
+      "required": ["id", "firstname", "surname", "motivation", "share"],
+      "properties": {
+        "id": { "bsonType": "string" },
+        "firstname": { "bsonType": "string" },
+        "surname": { "bsonType": "string" },
+        "motivation": { "bsonType": "string" },
+        "share": { "bsonType": "int" }
+      }
+    }
+  }
+}

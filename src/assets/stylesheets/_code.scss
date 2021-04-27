@@ -2,13 +2,20 @@
   max-height: 150px;
   overflow: scroll;
   font-family: 'Source Code Pro', monospace;
+  font-size: 12px;
+  font-weight: $fw-semi-bold;
 }
 
 .json-preview {
   font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
 
   &__nest-container {
     padding-left: $global-padding / 2;
+  }
+
+  &__nest-item {
+    margin-bottom: $global-margin;
   }
 
   &__exploder {
