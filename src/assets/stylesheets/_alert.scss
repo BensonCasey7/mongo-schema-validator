@@ -1,0 +1,30 @@
+.alert {
+  position: relative;
+
+  &--error {
+    background-color: $light-red;
+    border: $red 2px solid;
+    border-radius: 2px;
+  }
+
+  &--inline {
+    display: inline;
+  }
+
+  &__popup {
+    position: absolute;
+    display: none;
+    top: -5px;
+    left: 50%;
+    width: 150px;
+    overflow-wrap: break-word;
+    -webkit-transform: translateY(-100%) translateX(-50%);
+    background-color: $light-red;
+    border: $red 2px solid;
+
+
+    &--active {
+      display: block;
+    }
+  }
+}
