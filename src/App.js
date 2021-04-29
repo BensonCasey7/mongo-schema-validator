@@ -11,6 +11,19 @@ function App() {
   const [file, setFile] = useState([]);
   const [schema, setSchema] = useState({});
 
+  const updateJson = (path, data) => {
+    let temp = file;
+    let formattedPath = "";
+    path.forEach((node) => {
+      formattedPath = `${formattedPath}[${
+        node.type === "array" ? node.key : `'${node.key}'`
+      }]`;
+    });
+    eval(`temp${formattedPath} = '${data}'`);
+    setFile(temp);
+    console.log(eval(`file${formattedPath}`));
+  };
+
   return (
     <div className={"page-wrapper"}>
       <div className={"page-wrapper__content"}>
@@ -36,7 +49,11 @@ function App() {
             mockDataText={"Mock Nobel Prize Schema"}
           />
           <FileFrame file={schema} />
-          {file ? <JsonPreview data={file} schema={schema} /> : <></>}
+          {file ? (
+            <JsonPreview data={file} schema={schema} updateJson={updateJson} />
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

@@ -25,6 +25,8 @@ const ArrayDisplay = (props) => {
                 data={item}
                 schema={props.schema?.properties}
                 required={props.schema?.required}
+                path={props.path.concat({ type: "array", key: index })}
+                updateJson={props.updateJson}
               />
             </div>
           );

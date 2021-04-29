@@ -7,12 +7,19 @@ const ObjectNode = (props) => {
   return (
     <>
       {Array.isArray(props.data) ? (
-        <ArrayDisplay data={props.data} schema={props.schema} />
+        <ArrayDisplay
+          data={props.data}
+          schema={props.schema}
+          path={props.path}
+          updateJson={props.updateJson}
+        />
       ) : (
         <KeyValueDisplay
           data={props.data}
           schema={props.schema}
           required={props.required}
+          path={props.path}
+          updateJson={props.updateJson}
         />
       )}
     </>

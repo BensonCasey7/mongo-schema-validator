@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BsPencil, BsCheck } from "react-icons/bs";
 
 import ObjectNode from "./ObjectNode";
 import InvalidData from "./InvalidData";
@@ -8,12 +9,14 @@ const KeyValueDisplay = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [objectWideError, setObjectWideError] = useState(false);
   const [objectWideErrorMessage, setObjectWideErrorMessage] = useState("");
+  const [data, setData] = useState(props.data);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
-    if (typeof props.data === "object") {
+    if (typeof data === "object") {
       if (props.required) {
         const difference = props.required.filter(
-          (x) => !Object.keys(props.data).includes(x)
+          (x) => !Object.keys(data).includes(x)
         );
         if (difference.length > 0) {
           setObjectWideError(true);
@@ -23,72 +26,95 @@ const KeyValueDisplay = (props) => {
     } else {
       switch (props.schema?.bsonType) {
         case "int":
-          if (!Number.isInteger(props.data)) {
+          if (!Number.isInteger(data)) {
             setError(true);
-            setErrorMessage(`"${props.data}" is not an integer`);
+            setErrorMessage(`"${data}" is not an integer`);
             break;
           }
           if (props.schema.min) {
-            if (props.data < props.schema.min) {
+            if (data < props.schema.min) {
               setError(true);
               setErrorMessage(
-                `"${props.data}" is less than the defined minimum of ${props.schema.min}`
+                `"${data}" is less than the defined minimum of ${props.schema.min}`
               );
               break;
             }
           }
           if (props.schema.max) {
-            if (props.data > props.schema.max) {
+            if (data > props.schema.max) {
               setError(true);
               setErrorMessage(
-                `"${props.data}" is greater than the defined maximum of ${props.schema.max}`
+                `"${data}" is greater than the defined maximum of ${props.schema.max}`
               );
               break;
             }
+          }
+          if (!editing) {
+            setError(false);
+            setErrorMessage("");
           }
           break;
         case "string":
-          if (typeof props.data !== "string") {
+          if (typeof data !== "string") {
             setError(true);
-            setErrorMessage(`"${props.data}" is not a string`);
+            setErrorMessage(`"${data}" is not a string`);
             break;
           }
           if (props.schema.pattern) {
-            if (!props.data.match(props.schema.pattern)) {
+            if (!data.match(props.schema.pattern)) {
               setError(true);
               setErrorMessage(
-                `"${props.data}" does not match the pattern ${props.schema.pattern}`
+                `"${data}" does not match the pattern ${props.schema.pattern}`
               );
               break;
             }
+          }
+          if (!editing) {
+            setError(false);
+            setErrorMessage("");
           }
           break;
         default:
           setError(false);
       }
     }
-  }, [props.data, props.required, props.schema]);
+  }, [data, editing, props.required, props.schema]);
 
-  return typeof props.data === "object" ? (
+  const handleChange = (event) => {
+    setData(event.target.value);
+    props.updateJson(props.path, event.target.value);
+  };
+
+  return typeof data === "object" ? (
     <>
       {objectWideError ? (
         <InvalidData message={objectWideErrorMessage}>
-          {Object.entries(props.data).map(([key, value]) => {
+          {Object.entries(data).map(([key, value]) => {
             return (
               <div key={key}>
                 <span className={"json-preview__key"}>{key}:</span>{" "}
-                <ObjectNode data={value} schema={props.schema?.[key]} />
+                <ObjectNode
+                  data={value}
+                  schema={props.schema?.[key]}
+                  path={props.path.concat({ type: "kv", key: key })}
+                  updateJson={props.updateJson}
+                />
               </div>
             );
           })}
         </InvalidData>
       ) : (
         <div>
-          {Object.entries(props.data).map(([key, value]) => {
+          {Object.entries(data).map(([key, value]) => {
             return (
               <div key={key}>
                 <span className={"json-preview__key"}>{key}:</span>{" "}
-                <ObjectNode data={value} schema={props.schema?.[key]} />
+                <ObjectNode
+                  data={value}
+                  schema={props.schema?.[key]}
+                  path={props.path.concat({ type: "kv", key: key })}
+                  updateJson={props.updateJson}
+                />
               </div>
             );
           })}
@@ -98,11 +124,28 @@ const KeyValueDisplay = (props) => {
   ) : (
     <>
       {error ? (
-        <InvalidData message={errorMessage} inline={true}>
-          {props.data}
-        </InvalidData>
+        <>
+          {editing ? (
+            <>
+              <input
+                type={"text"}
+                value={data}
+                placeholder={"Username"}
+                onChange={handleChange}
+              />
+              <BsCheck onClick={() => setEditing(false)} />
+            </>
+          ) : (
+            <>
+              <InvalidData message={errorMessage} inline={true}>
+                {data}
+              </InvalidData>
+              <BsPencil onClick={() => setEditing(true)} />
+            </>
+          )}
+        </>
       ) : (
-        props.data
+        data
       )}
     </>
   );
