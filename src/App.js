@@ -4,7 +4,7 @@ import "./assets/stylesheets/App.scss";
 import Uploader from "./components/Uploader";
 import FileFrame from "./components/FileFrame";
 import JsonPreview from "./components/JsonPreview";
-import nobel from "./nobel_prizes_incorrect_shortened.json";
+import nobel from "./nobel_prizes_incorrect.json";
 import nobel_schema from "./nobel_prizes_schema.json";
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
             mockData={() => {
               setFile(nobel);
             }}
-            mockDataText={"Mock Nobel Prize Data"}
+            mockDataText={"Use Nobel Prize Data"}
           />
           <FileFrame file={file} />
           <h2>Schema File</h2>
@@ -46,7 +46,7 @@ function App() {
             mockData={() => {
               setSchema(nobel_schema);
             }}
-            mockDataText={"Mock Nobel Prize Schema"}
+            mockDataText={"Use Nobel Prize Schema"}
           />
           <FileFrame file={schema} />
           {file ? (
